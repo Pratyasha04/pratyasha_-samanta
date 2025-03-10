@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Monitoring Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .dashboard {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+        }
+
+        .card h2 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .status {
+            font-weight: bold;
+            color: green;
+        }
+
+        .status.inactive {
+            color: red;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 1rem;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Service Monitoring Dashboard</h1>
+        </header>
+
+        <div class="dashboard">
+            <div class="card">
+                <h2>Service 1</h2>
+                <p>Status: <span class="status" id="status-1">Active</span></p>
+                <button onclick="toggleStatus(1)">Toggle Status</button>
+            </div>
+            <div class="card">
+                <h2>Service 2</h2>
+                <p>Status: <span class="status" id="status-2">Inactive</span></p>
+                <button onclick="toggleStatus(2)">Toggle Status</button>
+            </div>
+            <div class="card">
+                <h2>Service 3</h2>
+                <p>Status: <span class="status" id="status-3">Active</span></p>
+                <button onclick="toggleStatus(3)">Toggle Status</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Powered by Your Company</p>
+        </footer>
+    </div>
+
+    <script>
+        // Function to toggle the service status
+        function toggleStatus(serviceId) {
+            const statusElement = document.getElementById(`status-${serviceId}`);
+            const currentStatus = statusElement.textContent.trim();
+
+            if (currentStatus === 'Active') {
+                statusElement.textContent = 'Inactive';
+                statusElement.classList.remove('active');
+                statusElement.classList.add('inactive');
+            } else {
+                statusElement.textContent = 'Active';
+                statusElement.classList.remove('inactive');
+                statusElement.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
